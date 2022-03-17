@@ -35,7 +35,7 @@ function playRound(playerSelection, computerSelection){
             return "You win! Rock beats scissors";
         }
         else if (computerSelection === 'rock'){
-            return "It's a draw! Rock cant beat rock";
+            return "It's a draw! Rock cant beat rock. Repeating round!";
         }
         //returns the values of computer and player if both had invalid values for error debugging
         else{
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection){
     }
     else if (playerSelection === 'paper'){
         if (computerSelection === 'paper'){
-            return "It's a draw! Paper cant beat Paper";
+            return "It's a draw! Paper cant beat Paper. Repeating round!";
         }
         else if (computerSelection === 'scissors'){
             return "You lose! scissors beats Paper";
@@ -62,7 +62,7 @@ function playRound(playerSelection, computerSelection){
             return "You win! scissors beats Paper";
         }
         else if (computerSelection === 'scissors'){
-            return "It's a draw! scissors cant beat scissors";
+            return "It's a draw! scissors cant beat scissors. Repeating round!";
         }
         else if (computerSelection === 'rock'){
             return "You lose! rock beats scissors";
@@ -75,13 +75,15 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
+    //initialize round and, player and computer scores
     let round = 1;
-    while(round <= 5){
-        console.log(round);
+    let playerScore = 0;
+    let computerScore = 0;
+    while(round <= 5 &&  playerScore < 3 && computerScore < 3){
+        console.log("Round: " + round);
         let playerSelection = window.prompt("Rock paper or scissors?: ");
         playerSelection = playerSelection.toLowerCase();
-        console.log(playerSelection);
-        state = true;
+        state=true;
         while(state){
             if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
                 state = false;
@@ -96,7 +98,31 @@ function game(){
         console.log("Player: " + playerSelection);
         console.log("Computer: " + computerSelection);
         console.log(playRound(playerSelection, computerSelection));
+        outcome = playRound(playerSelection, computerSelection)
+        if (outcome.indexOf('win!') > -1){
+            playerScore++;
+        }
+        else if (outcome.indexOf('lose!') > -1){
+            computerScore++;
+        }
+        else{
+            continue;
+        }
         round++;
+        console.log("Player Score: " + playerScore);
+        console.log("Computer Score: " + computerScore);
+        if (playerScore == 3){
+            console.log("Player has won!");
+            break;
+        }
+        else if(computerScore == 3){
+            console.log("Computer has won!");
+            break;
+        }
+        else{
+            continue;
+        }
+
     }
     
 }
