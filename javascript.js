@@ -23,7 +23,7 @@ function computerPlay(){
     }
 }
 //function that starts the round
-function startGame(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     //compare value of playerSelection and computerSelection
     //determine the outcome of the winner based on rock-paper-scissor rules
     playerSelection = playerSelection.toLowerCase();
@@ -74,6 +74,29 @@ function startGame(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = "roCk";
-const computerSelection = computerPlay();
-console.log(startGame(playerSelection, computerSelection));
+function game(){
+    let round = 1;
+    while(round <= 5){
+        console.log(round);
+        let playerSelection = window.prompt("Rock paper or scissors?: ");
+        playerSelection = playerSelection.toLowerCase();
+        console.log(playerSelection);
+        state = true;
+        while(state){
+            if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+                state = false;
+            }
+            else{
+                alert("Only type rock papers or scissors. round repeated");
+                playerSelection = window.prompt("Rock paper or scissors?: ");
+                playerSelection = playerSelection.toLowerCase();
+            }
+        }
+        const computerSelection = computerPlay();
+        console.log("Player: " + playerSelection);
+        console.log("Computer: " + computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+        round++;
+    }
+    
+}
