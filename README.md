@@ -1,1 +1,1 @@
-# rock-paper-sciscor
+# rock-paper-scisscor
