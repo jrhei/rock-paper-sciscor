@@ -1,3 +1,21 @@
+/*const stats = document.querySelector('#stats');
+const playerScore = document.createElement('div');
+playerScore.classList.add('pScore');
+playerScore.textContent = 'Player score: ';
+
+stats.appendChild(stats);*/
+const stats = document.querySelector('#stats');
+
+const pscore = document.createElement('div');
+pscore.classList.add('player-score');
+pscore.textContent = 'Player score: 0';
+
+const cscore = document.createElement('div');
+cscore.classList.add('player-score');
+cscore.textContent = 'Computer score: 0';
+
+stats.appendChild(pscore);
+stats.appendChild(cscore);
 function computerPlay(){
     //give designated values from 1-3 to rock, papers and scissors
     let rock = 1;
@@ -73,15 +91,69 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
+let round = 1;
+let playerScore = 0;
+let computerScore = 0;
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        alert(button.id);
+        console.log(button.id);
+        let winner = game(button.id);
 
-function game(){
+        if (winner === 'player'){
+            playerScore++;
+            pscore.textContent = "Player score:" + playerScore;
+        }
+        else if (winner === 'computer'){
+            computerScore++;
+            cscore.textContent = "Computer score:" + computerScore;
+        }
+        else{
+            console.log('draw');
+        }
+        if (playerScore === 5){
+            pscore.textContent = "Player score:" + playerScore;
+            alert('You have won!');
+            playerScore = 0;
+            computerScore = 0;
+        }
+        else if (computerScore === 5){
+            cscore.textContent = "Computer score:" + computerScore;
+            alert('Oh no! The computer won!');
+            playerScore = 0;
+            computerScore = 0;
+        }
+        
+        
+        console.log('player score: ' + playerScore);
+        console.log('Comp score: ' + computerScore);
+    });
+});
+
+
+function game(choice){ 
     //initialize round and, player and computer scores
-    let round = 1;
-    let playerScore = 0;
-    let computerScore = 0;
+    
+    let playerSelection = choice;
+    playerSelection = playerSelection.toLowerCase(); //save button choice to a a var
+    const computerSelection = computerPlay(); //save random computer choice to a var
+    
+    console.log("Player: " + playerSelection);
+    console.log("Computer: " + computerSelection);
+    outcome = playRound(playerSelection, computerSelection);
+    if (outcome.indexOf('win!') > -1){
+        return 'player';
+    }
+    else if (outcome.indexOf('lose!') > -1){
+        return 'computer';
+    }
+
+    /*
     while(round <= 5 &&  playerScore < 3 && computerScore < 3){
         console.log("Round: " + round);
-        let playerSelection = window.prompt("Rock paper or scissors?: ");
+        //let playerSelection = window.prompt("Rock paper or scissors?: ");
+        let playerSelection = choice;
         playerSelection = playerSelection.toLowerCase();
         state=true;
         while(state){
@@ -123,6 +195,7 @@ function game(){
             continue;
         }
 
-    }
+    }*/
     
 }
+
