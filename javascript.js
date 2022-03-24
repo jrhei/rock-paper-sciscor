@@ -1,9 +1,4 @@
-/*const stats = document.querySelector('#stats');
-const playerScore = document.createElement('div');
-playerScore.classList.add('pScore');
-playerScore.textContent = 'Player score: ';
 
-stats.appendChild(stats);*/
 const stats = document.querySelector('#stats');
 
 const pscore = document.createElement('div');
@@ -148,54 +143,6 @@ function game(choice){
     else if (outcome.indexOf('lose!') > -1){
         return 'computer';
     }
-
-    /*
-    while(round <= 5 &&  playerScore < 3 && computerScore < 3){
-        console.log("Round: " + round);
-        //let playerSelection = window.prompt("Rock paper or scissors?: ");
-        let playerSelection = choice;
-        playerSelection = playerSelection.toLowerCase();
-        state=true;
-        while(state){
-            if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
-                state = false;
-            }
-            else{
-                alert("Only type rock papers or scissors. round repeated");
-                playerSelection = window.prompt("Rock paper or scissors?: ");
-                playerSelection = playerSelection.toLowerCase();
-            }
-        }
-        const computerSelection = computerPlay();
-        console.log("Player: " + playerSelection);
-        console.log("Computer: " + computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-        outcome = playRound(playerSelection, computerSelection)
-        if (outcome.indexOf('win!') > -1){
-            playerScore++;
-        }
-        else if (outcome.indexOf('lose!') > -1){
-            computerScore++;
-        }
-        else{
-            continue;
-        }
-        round++;
-        console.log("Player Score: " + playerScore);
-        console.log("Computer Score: " + computerScore);
-        if (playerScore == 3){
-            console.log("Player has won!");
-            break;
-        }
-        else if(computerScore == 3){
-            console.log("Computer has won!");
-            break;
-        }
-        else{
-            continue;
-        }
-
-    }*/
     
 }
 
