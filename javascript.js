@@ -138,10 +138,15 @@ function game(choice){
     console.log("Computer: " + computerSelection);
     outcome = playRound(playerSelection, computerSelection);
     if (outcome.indexOf('win!') > -1){
+        alert(outcome);
         return 'player';
     }
     else if (outcome.indexOf('lose!') > -1){
+        alert(outcome);
         return 'computer';
+    }
+    else{
+        alert(outcome);
     }
     
 }
